@@ -1,15 +1,60 @@
-create table user(
-    id int auto_increment primary key comment '主键',
-    no varchar(255) comment '账号',
-    name varchar(100) not null comment '用户名',
-    password varchar(1024) not null comment '密码',
-    age int comment '年龄',
-    sex int comment '性别',
-    phone varchar(20) comment '电话号码',
-    role_id int not null comment '角色 0超级管理员 1管理员 2普通账号',
-    is_valid int not null default 1 comment '账号状态 0 冻结 1 正常状态 2 已删除',
-    create_time datetime not null default current_timestamp comment '创建时间',
-    update_time datetime not null default current_timestamp on update current_timestamp comment '最后变更时间'
-) charset = utf8;
+-- MySQL dump 10.13  Distrib 5.7.31, for Win64 (x86_64)
+--
+-- Host: localhost    Database: words
+-- ------------------------------------------------------
+-- Server version	5.7.31-log
 
-insert into user (id, no, name, password, age, sex, phone, role_id) values (1, 'admin', 'admin', 'admin123', 20, 1, '10001', 0, 1);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `no` varchar(20) DEFAULT NULL COMMENT '账号',
+  `name` varchar(100) NOT NULL COMMENT '用户名',
+  `password` varchar(1024) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL COMMENT '年龄',
+  `sex` int(11) DEFAULT NULL COMMENT '性别',
+  `phone` varchar(20) DEFAULT NULL COMMENT '电话号码',
+  `role_id` int(11) NOT NULL COMMENT '角色 0超级管理员 1管理员 2普通账号',
+  `is_valid` int(11) NOT NULL DEFAULT '1' COMMENT '账号状态 0 冻结 1 正常状态 2 已删除',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后变更时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','admin','XqnM0kcSsrYHMO3WkYusxiIu7NkvOVfiR2ZgLbVPoM5iY6tKypH8qzdnFKI+hy0QnkBUSBreJMdjVFyurbb8xw==',20,1,'10001',0,1,'2023-11-22 14:41:06','2023-12-05 16:52:48'),(2,'admin001','管理员','MOVedbMKCLprhupdLeYT7ilMvfaCtkJrjbq66gT85nCqTfhc32s1zEWWQstQ/YsNWxX4AHlgpxhhlRMOGnxkXg==',20,0,'13976298872',1,1,'2023-11-24 17:09:25','2023-12-05 16:58:02'),(4,'chason','chason','kUZxBer+9qpqbL4128wfnqnBW/L7Iu3tE+sKiVbTO+bpB8sRLTRtqDWzMbhveVsSTb8RvdLIIlKzKnSaa4/KQQ==',18,1,'13309878897',2,1,'2023-11-28 17:10:45','2023-12-05 16:59:19'),(7,'guest','guest','tSxbdIBgqYBQek8nv60XPyvdTmvFWzWQcxAwk3ck6T9JqWtq4kDFxYOn6cgZ5i806Sc4n8W5apz7Uc3bsdxXXw==',25,0,NULL,2,1,'2023-11-30 15:31:52','2023-12-05 17:00:02');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-12-05 17:40:30
