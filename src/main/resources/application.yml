@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: database-demo
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver    # by Mysql-connector-j
+    username: glue
+    password: Glue01_glue
+    url: jdbc:mysql://localhost:5200/words?characterEncoding=utf-8&serverTimezone=GMT%2b8
+
+mybatis:
+  type-aliases-package: com.chason.test01.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*.xml

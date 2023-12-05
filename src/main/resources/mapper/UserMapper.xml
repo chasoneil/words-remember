@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chason.test01.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chason.test01.entity.user.User">
+        <id column="id" property="id" />
+        <result column="no" property="no" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="age" property="age" />
+        <result column="sex" property="sex" />
+        <result column="phone" property="phone" />
+        <result column="role_id" property="roleId" />
+        <result column="is_valid" property="isValid" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, no, name, password, age, sex, phone, role_id, is_valid, create_time, update_time
+    </sql>
+
+    <select id="pageC" resultType="com.chason.test01.entity.user.User">
+        select * from user
+    </select>
+
+    <select id="getUserByNo" resultType="com.chason.test01.entity.user.User">
+        select * from user where no = #{no}
+    </select>
+
+    <select id="listByLikeMap" parameterType="map" resultType="com.chason.test01.entity.user.User">
+        select * from user
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT(CONCAT('%',#{name},'%'))
+            </if>
+        </where>
+    </select>
+
+</mapper>

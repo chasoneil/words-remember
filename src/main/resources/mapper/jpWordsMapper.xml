@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.chason.test01.mapper.JpWordsMapper">
+
+    <resultMap id="jpWords" type="com.chason.test01.entity.jp.JpWords">
+        <id column="id" property="id"/>
+        <result column="cn" property="cn"/>
+        <result column="jp_read" property="jpRead"/>
+        <result column="jp" property="jp"/>
+        <result column="class_number" property="classNumber"/>
+    </resultMap>
+
+<!--    <select id="get" resultMap="user">-->
+<!--        select * from user where user_id = #{userId}-->
+<!--    </select>-->
+
+    <select id="findAll" resultMap="jpWords">
+        select * from jp_words;
+    </select>
+
+    <select id="findByClassNumber" parameterType="int" resultMap="jpWords">
+        select * from jp_words
+        <where>
+            <if test="classNumber !=null and classNumber != ''">
+                and class_number = #{classNumber}
+            </if>
+            order by id
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.chason.test01.entity.jp.JpWords">
+        insert into jp_words (cn, jp_read, jp, class_number) values (#{cn}, #{jpRead}, #{jp}, #{classNumber})
+    </insert>
+
+    <delete id="removeById" parameterType="int">
+        delete from jp_words where id = #{id}
+    </delete>
+
+    <delete id="removeByClassNumber" parameterType="int">
+        delete from jp_words where class_number = #{classNumber}
+    </delete>
+
+<!--    <delete id="batchDelete" parameterType="int">-->
+<!--        delete from user where id in-->
+<!--        <foreach collection="array" item="eachId" separator="," open="(" close=")">-->
+<!--            #{eachId}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+
+    <update id="updateById" parameterType="int">
+        update jp_words set cn = #{cn}, jp_read = #{jpRead}, jp = #{jp}, class_number = #{classNumber} where id = #{id}
+    </update>
+
+</mapper>
