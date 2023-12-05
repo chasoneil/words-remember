@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chason.test01.mapper.UserMapper">
+<mapper namespace="com.chason.words.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.chason.test01.entity.user.User">
+    <resultMap id="BaseResultMap" type="com.chason.words.entity.user.User">
         <id column="id" property="id" />
         <result column="no" property="no" />
         <result column="name" property="name" />
@@ -22,15 +22,15 @@
         id, no, name, password, age, sex, phone, role_id, is_valid, create_time, update_time
     </sql>
 
-    <select id="pageC" resultType="com.chason.test01.entity.user.User">
+    <select id="pageC" resultType="com.chason.words.entity.user.User">
         select * from user
     </select>
 
-    <select id="getUserByNo" resultType="com.chason.test01.entity.user.User">
+    <select id="getUserByNo" resultType="com.chason.words.entity.user.User">
         select * from user where no = #{no}
     </select>
 
-    <select id="listByLikeMap" parameterType="map" resultType="com.chason.test01.entity.user.User">
+    <select id="listByLikeMap" parameterType="map" resultType="com.chason.words.entity.user.User">
         select * from user
         <where>
             <if test="name != null and name != ''">

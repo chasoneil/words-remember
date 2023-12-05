@@ -3,6 +3,7 @@
 ./target
 HELP.md
 .idea/libraries
+.mvn
 
 # Log file
 *.log
