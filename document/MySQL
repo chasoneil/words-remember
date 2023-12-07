@@ -1,3 +1,6 @@
+
+==== my.ini ====
+
 [client]
 default-character-set	= UTF8MB4
 socket					= D:/environment/MySQL/my5200/var/mysql.sock
@@ -25,3 +28,8 @@ log_bin					= D:/environment/MySQL/my5200/data/mysql-bin
 log_bin_index			= D:/environment/MySQL/my5200/data/mysql-bin.index
 relay_log				= D:/environment/MySQL/my5200/data/relay_log
 relay_log_index			= D:/environment/MySQL/my5200/data/relay_log.index
+
+
+=== operation ====
+
+/chason/mysql/base/mysql-8.0.31/bin/mysqld_safe --defaults-file=/chason/mysql/instances/my5200/my.cnf &
