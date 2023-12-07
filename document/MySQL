@@ -1,0 +1,27 @@
+[client]
+default-character-set	= UTF8MB4
+socket					= D:/environment/MySQL/my5200/var/mysql.sock
+
+[mysqld]
+port					= 5200
+autocommit				= ON
+character-set-server	= UTF8MB4
+read_only				= OFF
+default_time_zone		= "+8:00"
+log_timestamps			= SYSTEM
+max_connections			= 1000
+default-storage-engine	= INNODB
+server_id				= 5200
+
+#### PATH ####
+basedir					= D:/environment/MySQL/mysql-8.0.35-winx64
+datadir					= D:/environment/MySQL/my5200/data
+tmpdir					= D:/environment/MySQL/my5200/tmp
+socket					= D:/environment/MySQL/my5200/var/mysql.sock
+pid_file				= D:/environment/MySQL/my5200/var/mysql.pid_file
+
+log_error				= D:/environment/MySQL/my5200/log/error.log
+log_bin					= D:/environment/MySQL/my5200/data/mysql-bin
+log_bin_index			= D:/environment/MySQL/my5200/data/mysql-bin.index
+relay_log				= D:/environment/MySQL/my5200/data/relay_log
+relay_log_index			= D:/environment/MySQL/my5200/data/relay_log.index
