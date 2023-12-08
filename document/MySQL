@@ -32,4 +32,25 @@ relay_log_index			= D:/environment/MySQL/my5200/data/relay_log.index
 
 === operation ====
 
+# 1. initialize
+/chason/mysql/base/mysql-8.0.31/bin/mysqld --defaults-file=/chason/my5100/data/my.cnf --initialize --user=mysql
+
+# 2. start
 /chason/mysql/base/mysql-8.0.31/bin/mysqld_safe --defaults-file=/chason/mysql/instances/my5200/my.cnf &
+
+# 3. cat password
+cat /chason/my5100/data/log/error.log | grep "A temporary password"
+
+# 4. login
+/chason/mysql/5.7.30/bin/mysql -uroot -p --socket=/chason/my5100/data/var/mysql.sock
+
+# 5. initialize root (must)
+alter user 'root'@'localhost' identified by 'Glue01_root';
+
+# 6. create other user
+create user 'glue'@'%' identified by 'Glue01_glue';
+grant all privileges on *.* to 'glue';
+flush privileges;
+create user 'dbsync'@'%' identified by 'dbsync';
+grant replication client,replication slave on *.* to 'dbsync';
+flush privileges;
