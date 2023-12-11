@@ -1,28 +1,62 @@
 package com.chason.words.entity.jp;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.time.LocalDateTime;
+import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+/**
+ * <p>
+ *
+ * </p>
+ *
+ * @author chason
+ * @since 2023-12-11
+ */
 @Data
-public class JpWords {
+@EqualsAndHashCode(callSuper = false)
+@ApiModel(value="TblJpWords对象", description="")
+public class JpWords implements Serializable {
 
-    private int id;
+    private static final long serialVersionUID = 1L;
 
-    private String cn;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    private String jpRead;
+    @ApiModelProperty(value = "第几课")
+    private Integer classId;
 
-    private String jp;
+    @ApiModelProperty(value = "分组")
+    private Integer groupId;
 
-    private int classNumber;
+    @ApiModelProperty(value = "是否记住")
+    private Integer isRem;
 
-    @Override
-    public String toString() {
-        return "JpWords{" +
-                "id=" + id +
-                ", cn='" + cn + '\'' +
-                ", jpRead='" + jpRead + '\'' +
-                ", jp='" + jp + '\'' +
-                ", classNumber=" + classNumber +
-                '}';
-    }
+    @ApiModelProperty(value = "写法")
+    private String wWrite;
+
+    @ApiModelProperty(value = "读法")
+    private String wRead;
+
+    @ApiModelProperty(value = "中文含义")
+    private String wMean;
+
+    @ApiModelProperty(value = "创建时间")
+    private LocalDateTime createTime;
+
+    @ApiModelProperty(value = "首次学习时间")
+    private LocalDate firstLearnTime;
+
+    @ApiModelProperty(value = "上次学习时间")
+    private LocalDate lastLearnTime;
+
+    @ApiModelProperty(value = "最后变更时间")
+    private LocalDateTime updateTime;
+
+
 }

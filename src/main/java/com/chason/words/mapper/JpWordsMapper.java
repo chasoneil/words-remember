@@ -1,22 +1,16 @@
 package com.chason.words.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chason.words.entity.jp.JpWords;
-import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author chason
+ * @since 2023-12-11
+ */
+public interface JpWordsMapper extends BaseMapper<JpWords> {
 
-@Mapper
-public interface JpWordsMapper {
-
-    List<JpWords> findAll();
-
-    List<JpWords> findByClassNumber(int classNumber);
-
-    int insert(JpWords jpWords);
-
-    int removeById(int id);
-
-    // int removeByClassNumber(int classNumber);
-
-    // int updateById(int id);
 }
