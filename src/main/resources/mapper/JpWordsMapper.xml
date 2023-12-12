@@ -3,7 +3,7 @@
 <mapper namespace="com.chason.words.mapper.JpWordsMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.chason.words.entity.TblJpWords">
+    <resultMap id="BaseResultMap" type="com.chason.words.entity.jp.JpWords">
         <id column="id" property="id" />
         <result column="class_id" property="classId" />
         <result column="group_id" property="groupId" />
@@ -21,5 +21,20 @@
     <sql id="Base_Column_List">
         id, class_id, group_id, is_rem, w_write, w_read, w_mean, create_time, first_learn_time, last_learn_time, update_time
     </sql>
+
+    <select id="listByLikeMap" parameterType="map" resultType="com.chason.words.entity.jp.JpWords">
+        select * from jp_words
+        <where>
+            <if test="class_id != null and class_id != ''">
+                AND class_id = #{class_id}
+            </if>
+            <if test="group_id != null and group_id != ''">
+                AND group_id = #{group_id}
+            </if>
+            <if test="w_mean != null and w_mean != ''">
+                AND w_mean LIKE CONCAT(CONCAT('%',#{w_mean},'%'))
+            </if>
+        </where>
+    </select>
 
 </mapper>

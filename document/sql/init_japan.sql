@@ -15,3 +15,14 @@ create table tbl_jp_words (
 );
 
 
+create table class_info (
+    id int not null primary key comment 'class id',
+    name varchar(255) not null comment '课程名称'
+);
+
+create table group_info (
+    id int not null primary key comment 'group id',
+    name varchar(255) not null comment '分组名称'
+);
+
+

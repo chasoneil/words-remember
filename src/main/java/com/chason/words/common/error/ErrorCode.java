@@ -8,4 +8,7 @@ public interface ErrorCode {
 
     int USER_LOGIN_FAIL = 10003;
 
+
+    int REQUEST_BAD = 10004;
+
 }

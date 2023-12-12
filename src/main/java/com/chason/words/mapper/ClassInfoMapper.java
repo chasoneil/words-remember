@@ -1,11 +1,8 @@
 package com.chason.words.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.chason.words.entity.jp.JpWords;
+import com.chason.words.entity.jp.ClassInfo;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -16,7 +13,6 @@ import java.util.Map;
  * @since 2023-12-11
  */
 @Mapper
-public interface JpWordsMapper extends BaseMapper<JpWords> {
+public interface ClassInfoMapper extends BaseMapper<ClassInfo> {
 
-    List<JpWords> listByLikeMap (Map<String, Object> param);
 }

@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="words-remember" target="8" />
+      <module name="words-remember" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

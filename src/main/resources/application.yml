@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: database-demo
+    name: words
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver    # by Mysql-connector-j

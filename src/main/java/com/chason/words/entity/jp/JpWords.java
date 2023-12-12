@@ -2,6 +2,8 @@ package com.chason.words.entity.jp;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDate;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -20,7 +22,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="TblJpWords对象", description="")
+@ApiModel(value="JpWords对象", description="")
 public class JpWords implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,12 +40,15 @@ public class JpWords implements Serializable {
     private Integer isRem;
 
     @ApiModelProperty(value = "写法")
+    @TableField(value = "w_write")
     private String wWrite;
 
     @ApiModelProperty(value = "读法")
+    @TableField(value = "w_read")
     private String wRead;
 
     @ApiModelProperty(value = "中文含义")
+    @TableField(value = "w_mean")
     private String wMean;
 
     @ApiModelProperty(value = "创建时间")
