@@ -3,22 +3,15 @@ package com.chason.words.controller;
 
 import com.chason.words.common.R;
 import com.chason.words.common.error.ErrorCode;
-import com.chason.words.entity.jp.ClassInfo;
-import com.chason.words.entity.jp.GroupInfo;
-import com.chason.words.entity.jp.JpSearchVO;
-import com.chason.words.entity.jp.JpWords;
-import com.chason.words.entity.user.User;
+import com.chason.words.entity.jp.*;
 import com.chason.words.service.jp.ClassInfoService;
 import com.chason.words.service.jp.GroupInfoService;
 import com.chason.words.service.jp.JpWordsService;
-import com.chason.words.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -59,34 +52,16 @@ public class JpWordsController {
     }
 
     @PostMapping("/list")
-    public R list(@RequestBody JpSearchVO vo) {
+    public R list(@RequestBody JpWordsSearchVO vo) {
 
-        Map<String, Object> param = new HashMap<>();
-
-        System.out.println(vo);
-
-        if (!StringUtil.isEmpty(vo.getClassId())) {
-            param.put("class_id", Integer.parseInt(vo.getClassId()));
-        } else {
-            param.put("class_id", null);
-        }
-
-        if (!StringUtil.isEmpty(vo.getGroupId())) {
-            param.put("group_id", Integer.parseInt(vo.getGroupId()));
-        } else {
-            param.put("group_id", null);
-        }
-
-        param.put("w_mean", vo.getWMean());
-        List<JpWords> jpWords;
-
+        JpWordsPageVO pageVO = new JpWordsPageVO();
         try {
-            jpWords = jpWordsService.listbyLikeMap(param);
+            pageVO.setCount(jpWordsService.listByLikeMapCount(vo));
+            pageVO.setData(jpWordsService.listbyLikeMap(vo));
         } catch (Exception e) {
-            return R.error();
+            return R.error(10200, e.getMessage());
         }
-
-        return R.ok(jpWords);
+        return R.ok(pageVO);
     }
 
     @GetMapping("/list/class")

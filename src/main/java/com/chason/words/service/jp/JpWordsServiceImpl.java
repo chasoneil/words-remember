@@ -1,6 +1,8 @@
 package com.chason.words.service.jp;
 
 import com.chason.words.entity.jp.JpWords;
+import com.chason.words.entity.jp.JpWordsPageVO;
+import com.chason.words.entity.jp.JpWordsSearchVO;
 import com.chason.words.mapper.JpWordsMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chason.words.utils.StringUtil;
@@ -12,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +33,13 @@ public class JpWordsServiceImpl extends ServiceImpl<JpWordsMapper, JpWords> impl
     private JpWordsMapper jpWordsMapper;
 
     @Override
-    public List<JpWords> listbyLikeMap(Map<String, Object> param) {
-        return jpWordsMapper.listByLikeMap(param);
+    public List<JpWords> listbyLikeMap(JpWordsSearchVO vo) {
+        return jpWordsMapper.listByLikeMap(parseParam(vo, "data"));
+    }
+
+    @Override
+    public int listByLikeMapCount(JpWordsSearchVO vo) {
+        return jpWordsMapper.listByLikeMapCount(parseParam(vo, "count"));
     }
 
     @Override
@@ -81,5 +89,29 @@ public class JpWordsServiceImpl extends ServiceImpl<JpWordsMapper, JpWords> impl
         }
 
         return true;
+    }
+
+    private Map<String, Object> parseParam (JpWordsSearchVO vo, String type) {
+
+        Map<String, Object> param = new HashMap<>();
+
+        if (!StringUtil.isEmpty(vo.getClassId())) {
+            param.put("class_id", Integer.parseInt(vo.getClassId()));
+        }
+
+        if (!StringUtil.isEmpty(vo.getGroupId())) {
+            param.put("group_id", Integer.parseInt(vo.getGroupId()));
+        }
+
+        if (!StringUtil.isEmpty(vo.getWMean())) {
+            param.put("w_mean", vo.getWMean());
+        }
+
+        if (type.equals("data")) {
+            param.put("pageNo", vo.getPageNo());
+            param.put("pageSize", vo.getPageSize());
+        }
+
+        return param;
     }
 }

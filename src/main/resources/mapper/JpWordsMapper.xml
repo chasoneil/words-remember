@@ -35,6 +35,25 @@
                 AND w_mean LIKE CONCAT(CONCAT('%',#{w_mean},'%'))
             </if>
         </where>
+        <if test="pageNo != null and pageSize != null">
+            limit #{pageNo}, #{pageSize}
+        </if>
+
+    </select>
+
+    <select id="listByLikeMapCount" parameterType="map" resultType="Integer">
+        select count(*) from jp_words
+        <where>
+            <if test="class_id != null and class_id != ''">
+                AND class_id = #{class_id}
+            </if>
+            <if test="group_id != null and group_id != ''">
+                AND group_id = #{group_id}
+            </if>
+            <if test="w_mean != null and w_mean != ''">
+                AND w_mean LIKE CONCAT(CONCAT('%',#{w_mean},'%'))
+            </if>
+        </where>
     </select>
 
 </mapper>

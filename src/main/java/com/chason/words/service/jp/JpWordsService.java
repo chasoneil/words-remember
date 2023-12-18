@@ -2,10 +2,10 @@ package com.chason.words.service.jp;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chason.words.entity.jp.JpWords;
+import com.chason.words.entity.jp.JpWordsSearchVO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -17,8 +17,9 @@ import java.util.Map;
  */
 public interface JpWordsService extends IService<JpWords> {
 
-    List<JpWords> listbyLikeMap(Map<String, Object> param);
+    List<JpWords> listbyLikeMap(JpWordsSearchVO vo);
 
     boolean readFile(MultipartFile file);
 
+    int listByLikeMapCount(JpWordsSearchVO vo);
 }

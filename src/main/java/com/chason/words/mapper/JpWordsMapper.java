@@ -19,4 +19,6 @@ import java.util.Map;
 public interface JpWordsMapper extends BaseMapper<JpWords> {
 
     List<JpWords> listByLikeMap (Map<String, Object> param);
+
+    int listByLikeMapCount (Map<String, Object> param);
 }
